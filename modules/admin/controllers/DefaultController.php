@@ -7,12 +7,15 @@ use yii\web\Controller;
 /**
  * Default controller for the `admin` module
  */
-class DefaultController extends Controller
+class DefaultController extends CommonController
 {
-    /**
-     * Renders the index view for the module
-     * @return string
-     */
+
+
+    public function init(){
+        parent::init();
+    }
+
+
     public function actionIndex()
     {
         return $this->render('index');
