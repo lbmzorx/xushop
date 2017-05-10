@@ -8,5 +8,5 @@
 //$this->title = 'My Yii ApplicationXu';
 use yii\helpers\Html;
 ?>
-<title><? = Html::encode($dataShow['titleHome']) ?></title>
+<title><?= Html::encode($dataShow['titleHome']) ?></title>
 <h2>Heading</h2>

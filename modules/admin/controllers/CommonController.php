@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\controllers\BaseController;
+use yii\helpers\Url;
 
 /**
  * Default controller for the `admin` module
@@ -16,7 +17,177 @@ class CommonController extends BaseController
     public $layout = 'main';
     public function init(){
         parent::init();
+        $view = \Yii::$app->getView();
+        $view->params['menu']=self::menu();
     }
-
-
+    /*
+     * 布局中的传递参数
+     */
+    /*
+     * 布局中的主菜单
+     */
+    public  function menu(){
+        return [
+            ['id'=>'default','name'=>'首页','url'=>Url::to(['/admin/default/index']),
+                'left'=>[
+                    ['id'=>'default','name'=>'个人统计','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index']),
+                        'subLeft'=>[
+                            ['id'=>'default','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                        ],
+                    ],
+                    ['id'=>'default','name'=>'商品记录','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/record']),
+                        'subLeft'=>[
+                            ['id'=>'default','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                        ],
+                    ],
+                    ['id'=>'default','name'=>'公司信息','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/add']),
+                        'subLeft'=>[
+                            ['id'=>'default','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                        ],
+                    ],
+                    ['id'=>'default','name'=>'新闻管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/modify']),
+                        'subLeft'=>[
+                            ['id'=>'default','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'信息管理','icon'=>'&#xe614;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'default','name'=>'服务资料','icon'=>'&#xe614;','url'=>Url::to(['/admin/default/index'])],
+                        ],
+                    ],
+                ],
+            ],
+            ['id'=>'product','name'=>'商品统计','icon'=>'&#xe62d;','url'=>Url::to(['/admin/product/index']),
+                'left'=>[
+                    ['id'=>'product','name'=>'个人统计','icon'=>'&#xe62d;','url'=>Url::to(['/admin/product/index']),
+                        'subLeft'=>[
+                            ['id'=>'product','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/product/index'])],
+                            ['id'=>'product','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/product/index'])],
+                            ['id'=>'product','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/product/index'])],
+                        ],
+                    ],
+                    ['id'=>'product','name'=>'商品记录','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/record']),
+                        'subLeft'=>[
+                            ['id'=>'product','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'product','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'product','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                        ],
+                    ],
+                    ['id'=>'product','name'=>'公司信息','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/add']),
+                        'subLeft'=>[
+                            ['id'=>'product','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'product','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'product','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                        ],
+                    ],
+                    ['id'=>'product','name'=>'新闻管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/modify']),
+                        'subLeft'=>[
+                            ['id'=>'product','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'product','name'=>'信息管理','icon'=>'&#xe614;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'product','name'=>'服务资料','icon'=>'&#xe614;','url'=>Url::to(['/admin/default/index'])],
+                        ],
+                    ],
+                ],
+            ],
+            ['id'=>'number','name'=>'会员管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index']),
+                'left'=>[
+                    ['id'=>'number','name'=>'个人统计','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index']),
+                        'subLeft'=>[
+                            ['id'=>'number','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                        ],
+                    ],
+                    ['id'=>'number','name'=>'商品记录','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/record']),
+                        'subLeft'=>[
+                            ['id'=>'number','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                        ],
+                    ],
+                    ['id'=>'number','name'=>'公司信息','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/add']),
+                        'subLeft'=>[
+                            ['id'=>'number','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'信息管理','icon'=>'&#xe609;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                        ],
+                    ],
+                    ['id'=>'number','name'=>'新闻管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/modify']),
+                        'subLeft'=>[
+                            ['id'=>'number','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'信息管理','icon'=>'&#xe614;','url'=>Url::to(['/admin/number/index'])],
+                            ['id'=>'number','name'=>'服务资料','icon'=>'&#xe614;','url'=>Url::to(['/admin/number/index'])],
+                        ],
+                    ],
+                ],
+            ],
+            ['id'=>'set','name'=>'服务设置','url'=>Url::to(['/admin/set/index']),
+                'left'=>[
+                    ['id'=>'set','name'=>'个人统计','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index']),
+                        'subLeft'=>[
+                            ['id'=>'set','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'信息管理','icon'=>'&#xe609;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                        ],
+                    ],
+                    ['id'=>'set','name'=>'商品记录','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/record']),
+                        'subLeft'=>[
+                            ['id'=>'set','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                        ],
+                    ],
+                    ['id'=>'set','name'=>'公司信息','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/add']),
+                        'subLeft'=>[
+                            ['id'=>'set','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                        ],
+                    ],
+                    ['id'=>'set','name'=>'新闻管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/modify']),
+                        'subLeft'=>[
+                            ['id'=>'set','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'信息管理','icon'=>'&#xe609;','url'=>Url::to(['/admin/set/index'])],
+                            ['id'=>'set','name'=>'服务资料','icon'=>'&#xe614;','url'=>Url::to(['/admin/set/index'])],
+                        ],
+                    ],
+                ],
+            ],
+            ['id'=>'new','name'=>'公告消息','url'=>Url::to(['/admin/new/index']),
+                'left'=>[
+                    ['id'=>'new','name'=>'个人统计','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index']),
+                        'subLeft'=>[
+                            ['id'=>'new','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'信息管理','icon'=>'&#xe62c;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'服务资料','icon'=>'&#xe609;','url'=>Url::to(['/admin/new/index'])],
+                        ],
+                    ],
+                    ['id'=>'new','name'=>'商品记录','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/record']),
+                        'subLeft'=>[
+                            ['id'=>'new','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                        ],
+                    ],
+                    ['id'=>'new','name'=>'公司信息','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/add']),
+                        'subLeft'=>[
+                            ['id'=>'new','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                        ],
+                    ],
+                    ['id'=>'new','name'=>'新闻管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/modify']),
+                        'subLeft'=>[
+                            ['id'=>'new','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'信息管理','icon'=>'&#xe614;','url'=>Url::to(['/admin/new/index'])],
+                            ['id'=>'new','name'=>'服务资料','icon'=>'&#xe614;','url'=>Url::to(['/admin/new/index'])],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
 }
