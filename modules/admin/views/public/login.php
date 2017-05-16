@@ -1,190 +1,116 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <style type="text/css">
-        @charset "UTF-8";
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
-            display: none !important;
-        }
-
-        ng\:form {
-            display: block;
-        }
-
-        .ng-animate-shim {
-            visibility: hidden;
-        }
-
-        .ng-anchor {
-            position: absolute;
-        }</style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <title>成品商家端</title>
-    <link href="/admin/swiper/swiper.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/admin/css/font_uefxj7jl5dxqolxr.css">
-    <link rel="stylesheet" type="text/css" href="/admin/layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="/admin/css/login.css">
-    <script type="text/javascript">
-        if (localStorage.getItem("scUserName") && localStorage.getItem("scUserId")) {
-            window.location.href = 'index.html';
-        }
-    </script>
+    <title>登录</title>
+    <meta name="keywords" content="xu"/>
+    <meta name="description" content="xu-shop-admin"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="/admin/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/admin/images/login.js"></script>
+    <link href="/admin/css/login2.css" rel="stylesheet" type="text/css"/>
 </head>
-<body class="ng-scope" ng-app="login" ng-controller="loginCtrl">
-<div style="height: 920px;" class="largeHeader" id="large-header">
-    <div class="swiper-container swiper-container-horizontal swiper-container-3d swiper-container-flip show"
-         ng-class="{true: 'show'}[isShow]">
-        <div class="swiper-wrapper">
-            <!--登录-->
-            <div style="width: 400px; z-index: 2; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);"
-                 class="swiper-slide loginBox swiper-no-swiping swiper-slide-active">
-                <div class="imgBox">
-                    <i class="eye leftEye" ng-class="{'eyeClose':eyeClose}"></i>
-                    <i class="eye rightEye" ng-class="{'eyeClose':eyeClose}"></i>
-                    <img src="/admin/images/logo-top.png">
-                </div>
-                <h3>XU登录</h3>
-                <form class="layui-form ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-usernameused ng-valid-minlength ng-valid-password ng-valid-usernameerror"
-                      ng-submit="submitLoginForm()" name="loginForm">
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input ng-model="userName" checkusername=""
-                                   ng-class="{'error':loginForm.username.$invalid &amp;&amp; loginForm.username.$dirty,'ok':loginForm.username.$valid}"
-                                   name="username" required="required" lay-verify="required" maxlength="18"
-                                   placeholder="请输入用户名" autocomplete="new-password"
-                                   class="layui-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-usernameused"
-                                   type="text">
-                            <i></i>
-                            <span class="errorTips ng-hide"
-                                  ng-show="loginForm.username.$dirty &amp;&amp; loginForm.username.$invalid">
-  									<span ng-show="loginForm.username.$error.required">请输入用户名</span>
-									<span class="ng-hide"
-                                          ng-show="loginForm.username.$error.usernameused">该用户名未被注册</span>
-									</span>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input checkpwd="" ng-model="passWord"
-                                   ng-class="{'error':loginForm.password.$invalid &amp;&amp; loginForm.password.$dirty,'ok':loginForm.password.$valid}"
-                                   name="password" ng-minlength="6" ng-focus="focusEye()" ng-blur="blurEye()"
-                                   maxlength="18" required="required" lay-verify="required" placeholder="请输入密码"
-                                   autocomplete="new-password"
-                                   class="layui-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-password ng-valid-usernameerror"
-                                   type="password">
-                            <i></i>
-                            <span class="errorTips ng-hide"
-                                  ng-show="loginForm.password.$dirty &amp;&amp; loginForm.password.$invalid">
-									<span ng-show="loginForm.password.$error.required">请输入密码</span>
-									<span class="ng-hide" ng-show="loginForm.password.$error.password">密码格式不正确</span>
-									<span class="ng-hide" ng-show="loginForm.password.$error.minlength">密码最小为6位</span>
-									<span class="ng-hide"
-                                          ng-show="loginForm.password.$error.usernameerror">用户名或密码错误</span>
-									</span>
-                        </div>
-                    </div>
-                    <div class="layui-form-item loginBtnBox">
-                        <div class="layui-input-block">
-                            <button disabled="disabled" type="submit" class="layui-btn"
-                                    ng-disabled="loginForm.username.$invalid || loginForm.password.$invalid">登 录
-                            </button>
-                        </div>
-                    </div>
-                    <a href="javascript:;" class="forgetPwd" ng-click="gotoForgetPwd()">忘记密码？</a>
-                </form>
-                <div style="opacity: 0;" class="swiper-slide-shadow-left"></div>
-                <div style="opacity: 0;" class="swiper-slide-shadow-right"></div>
-            </div>
-            <!--找回密码-->
-            <div style="width: 400px; z-index: 1; transform: translate3d(-400px, 0px, 0px) rotateX(0deg) rotateY(180deg);"
-                 class="swiper-slide loginBox swiper-no-swiping swiper-slide-next">
-                <form class="layui-form ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-invalid-phonenumber ng-valid-phonenumberused ng-invalid-vcode ng-valid-vcodeerror ng-valid-minlength ng-valid-password ng-valid-usernameerror"
-                      ng-submit="submitFindPwd()" name="findForm" style="position: relative;top: 50px;">
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input ng-model="phoneNumber" checkphonenumber="" required="required" lay-verify="required"
-                                   name="phonenumber"
-                                   ng-class="{'error':findForm.phonenumber.$invalid &amp;&amp; findForm.phonenumber.$dirty,'ok':findForm.phonenumber.$valid}"
-                                   maxlength="11" placeholder="请输入手机号" autocomplete="new-password"
-                                   class="layui-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength ng-invalid-phonenumber ng-valid-phonenumberused"
-                                   type="text">
-                            <i></i>
-                            <span class="errorTips ng-hide"
-                                  ng-show="findForm.phonenumber.$dirty &amp;&amp; findForm.phonenumber.$invalid">
-									<span ng-show="findForm.phonenumber.$error.required">请输入手机号</span>
-									<span ng-show="findForm.phonenumber.$error.phonenumber">手机号格式不正确</span>
-									<span class="ng-hide"
-                                          ng-show="findForm.phonenumber.$error.phonenumberused">该手机号未被注册</span>
-									</span>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input maxlength="6" checkvcode="" ng-model="vCode" required="required" name="vcode"
-                                   ng-class="{'error':findForm.vcode.$invalid &amp;&amp; findForm.vcode.$dirty,'ok':findForm.vcode.$valid}"
-                                   lay-verify="required" placeholder="请输入验证码" autocomplete="new-password"
-                                   class="layui-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength ng-invalid-vcode ng-valid-vcodeerror"
-                                   type="text">
-                            <i class="vCode"></i>
-                            <span class="errorTips ng-hide"
-                                  ng-show="findForm.vcode.$dirty &amp;&amp; findForm.vcode.$invalid">
-									<span ng-show="findForm.vcode.$error.required">请输入手机验证码</span>
-									<span class="ng-hide" ng-show="findForm.vcode.$error.vcodeerror">验证码错误</span>
-									<span ng-show="findForm.vcode.$error.vcode">手机验证码格式不正确</span>
-									</span>
-                            <button disabled="disabled" type="button" ng-click="sendVcode()"
-                                    class="layui-btn layui-btn-mini getVcode ng-binding"
-                                    ng-disabled="findForm.phonenumber.$invalid || vCodeBtnkey">获取验证码
-                            </button>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input ng-model="newPwd" checkpwd="" maxlength="18" name="newpwd"
-                                   ng-class="{'error':findForm.newPwd.$invalid &amp;&amp; findForm.newpwd.$dirty,'ok':findForm.newpwd.$valid}"
-                                   required="required" ng-minlength="6" lay-verify="required" placeholder="请输入新密码"
-                                   autocomplete="new-password"
-                                   class="layui-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-password ng-valid-usernameerror"
-                                   type="password">
-                            <i></i>
-                            <span class="errorTips ng-hide"
-                                  ng-show="findForm.newpwd.$dirty &amp;&amp; findForm.newpwd.$invalid">
-									<span ng-show="findForm.newpwd.$error.required">请输入新密码</span>
-									<span class="ng-hide" ng-show="findForm.newpwd.$error.minlength">新密码最少为6位</span>
-									<span class="ng-hide" ng-show="findForm.newpwd.$error.password">新密码格式不正确</span>
-									</span>
-                        </div>
-                    </div>
-                    <div class="layui-form-item loginBtnBox">
-                        <div class="layui-input-block">
-                            <button disabled="disabled" type="submit" class="layui-btn"
-                                    ng-disabled="findForm.phonenumber.$invalid || findForm.vcode.$invalid || findForm.newpwd.$invalid">
-                                确 定
-                            </button>
-                        </div>
-                    </div>
-                    <a href="javascript:;" class="forgetPwd" ng-click="gotoLogin()">已有密码，去登录</a>
-                </form>
-                <div style="opacity: 1;" class="swiper-slide-shadow-left"></div>
-                <div style="opacity: 0;" class="swiper-slide-shadow-right"></div>
-            </div>
+<body>
+<h1>后台登录模板下载<sup>V2014</sup></h1>
+
+<div class="login" style="margin-top:50px;">
+    <div class="header">
+        <div class="switch" id="switch"><a class="switch_btn_focus" id="switch_qlogin" href="javascript:void(0);"
+                                           tabindex="7">快速登录</a>
+            <a class="switch_btn" id="switch_login" href="javascript:void(0);" tabindex="8">快速注册</a>
+            <div class="switch_bottom" id="switch_bottom" style="position: absolute; width: 64px; left: 0px;"></div>
         </div>
     </div>
+    <div class="web_qr_login" id="web_qr_login" style="display: block; height: 350px;">
+        <!--登录-->
+        <div class="web_login" id="web_login">
+            <div class="login-box">
+                <div class="login_form">
+                    <form action="" name="loginform" accept-charset="utf-8" id="login_form"
+                          class="loginForm" method="post"><input type="hidden" name="did" value="0"/>
+                        <input type="hidden" name="to" value="log"/>
+                        <div class="uinArea" id="uinArea">
+                            <label class="input-tips" for="u">帐号：</label>
+                            <div class="inputOuter" id="uArea">
+                                <input type="text" id="u" name="username" class="inputstyle"/>
+                            </div>
+                        </div>
+                        <div class="pwdArea" id="pwdArea">
+                            <label class="input-tips" for="p">密码：</label>
+                            <div class="inputOuter" id="pArea">
+                                <input type="password" id="p" name="p" class="inputstyle"/>
+                            </div>
+                        </div>
+                        <div class="uinArea" id="verifyImg">
+                            <label class="input-tips" for="u">验证码:</label>
+                            <div class="inputOuterImg" id="uArea">
+                                <input type="text" id="i" name="verifyImg" class="inputstyleImg"/>
+                                <img src="" alt="验证码"/>
+                            </div>
+                        </div>
+                        <div style="padding-left:50px;margin-top:20px;"><input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--登录end-->
+    </div>
+    <!--注册-->
+    <div class="qlogin" id="qlogin" style="display: none; ">
 
-    <canvas height="920" width="1920" id="demo-canvas"></canvas>
+        <div class="web_login">
+            <form name="formReg" id="regUser" accept-charset="utf-8" action="<?=\yii\helpers\Url::to(['register'])?>" method="post">
+                <input type="hidden" name="to" value="reg"/>
+                <input type="hidden" name="did" value="0"/>
+                <ul class="reg_form" id="reg-ul">
+                    <div id="userCue" class="cue">快速注册请注意格式</div>
+                    <li>
+                        <label for="user" class="input-tips2">用户名：</label>
+                        <div class="inputOuter2">
+                            <input type="text" id="user" name="username" maxlength="16" class="inputstyle2"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="passwd" class="input-tips2">密码：</label>
+                        <div class="inputOuter2">
+                            <input type="password" id="passwd" name="password" maxlength="20" class="inputstyle2"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="passwd2" class="input-tips2">确认密码：</label>
+                        <div class="inputOuter2">
+                            <input type="password" id="passwd2" name="repassword" maxlength="20" class="inputstyle2"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="qq" class="input-tips2">QQ：</label>
+                        <div class="inputOuter2">
+                            <input type="text" id="qq" name="qq" maxlength="12" class="inputstyle2"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="qq" class="input-tips2">邮箱:</label>
+                        <div class="inputOuter2">
+                            <input type="text" id="email" name="email" class="inputstyle2"/>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inputArea">
+                            <input type="button" id="reg" style="margin-top:10px;margin-left:85px;" class="button_blue"
+                                   value="同意协议并注册"/> <a href="#" class="zcxy" target="_blank">注册协议</a>
+                        </div>
+                    </li>
+                    <div class="cl"></div>
+                </ul>
+            </form>
+
+
+        </div>
+
+
+    </div>
+    <!--注册end-->
 </div>
-
-<script src="/admin/swiper/swiper.js"></script>
-<script src="/admin/js/angular.js"></script>
-<script src="/admin/layui/layui.js"></script>
-<script src="/admin/js/TweenLite.js"></script>
-<script src="/admin/js/EasePack.js"></script>
-<script src="/admin/js/rAF.js"></script>
-<script src="/admin/js/loginCanvasAnimate.js"></script>
-<script src="/admin/js/login.js"></script>
-
-
+<div class="jianyi">*推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站</div>
 </body>
 </html>

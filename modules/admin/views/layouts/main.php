@@ -45,7 +45,7 @@ use yii\helpers\Url;
                     <?php foreach ($v['left'] as $kk => $vv): ?>
                         <?php if ($v['id'] == Yii::$app->controller->id): ?>
                             <li class="layui-nav-item <?php if ($kk == '0'): echo 'layui-nav-itemed';endif; ?>">
-                                <a class="javascript:;" href="javascript:;">开发工具</a>
+                                <a class="javascript:;" href="javascript:;"><?=$vv['name']?></a>
                                 <dl class="layui-nav-child">
                                     <?php if ($v['left']): ?>
                                         <?php foreach ($vv['subLeft'] as $vvv): ?>

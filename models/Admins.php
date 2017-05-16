@@ -9,9 +9,8 @@ use Yii;
  *
  * @property integer $id
  * @property string $username
- * @property string $auth_key
- * @property string $password_hash
- * @property string $password_reset_token
+ * @property string $password
+ * @property string reset_$password
  * @property string $email
  * @property integer $role
  * @property integer $status
@@ -20,6 +19,8 @@ use Yii;
  */
 class Admins extends \yii\db\ActiveRecord
 {
+
+
     /**
      * @inheritdoc
      */
@@ -34,10 +35,25 @@ class Admins extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'add_time', 'edit_time'], 'required'],
+//            ['username', 'filter', 'filter' => 'trim'],
+//            ['username', 'unique'],
+//            ['username', 'string', 'min' => 6, 'max' => 16],
+//            ['username', 'match','pattern'=>'/^[(\x{4E00}-\x{9FA5})a-zA-Z]+[(\x{4E00}-\x{9FA5})a-zA-Z_\d]*$/u','message'=>'用户名由字母，汉字，数字，下划线组成，且不能以数字和下划线开头。'],
+//            ['username', 'string', 'min' => 6, 'max' => 16],
+//
+//            [['username','password'], 'required'],
             [['role', 'status', 'add_time', 'edit_time'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
-            [['auth_key'], 'string', 'max' => 32],
+            [['username', 'password', 'reset_password', 'email'], 'string', 'max' => 255],
+//
+//            ['email', 'filter', 'filter' => 'trim'],
+//            ['email', 'required'],
+//            ['email', 'email'],
+//            ['email', 'string', 'max' => 255],
+//            ['email', 'unique'],
+
+//            [['password','repassword'], 'required'],
+//            [['password','repassword'], 'string', 'min' => 6],
+//            ['repassword', 'compare', 'compareAttribute' => 'password','message'=>'两次输入的密码不一致！'],
         ];
     }
 
@@ -49,9 +65,8 @@ class Admins extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'username' => 'Username',
-            'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
-            'password_reset_token' => 'Password Reset Token',
+            'password' => 'Password',
+            'reset_password' => 'Reset Password',
             'email' => 'Email',
             'role' => 'Role',
             'status' => 'Status',

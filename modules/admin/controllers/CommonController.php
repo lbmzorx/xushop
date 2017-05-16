@@ -30,10 +30,10 @@ class CommonController extends BaseController
         return [
             ['id'=>'default','name'=>'首页','url'=>Url::to(['/admin/default/index']),
                 'left'=>[
-                    ['id'=>'default','name'=>'个人统计','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index']),
+                    ['id'=>'default','name'=>'网站全局','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index']),
                         'subLeft'=>[
-                            ['id'=>'index','name'=>'个人风采','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
-                            ['id'=>'index2','name'=>'信息管理','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index1'])],
+                            ['id'=>'index','name'=>'全局服务','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index'])],
+                            ['id'=>'index2','name'=>'统计服务','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index1'])],
                             ['id'=>'index3','name'=>'服务资料','icon'=>'&#xe62d;','url'=>Url::to(['/admin/default/index3'])],
                         ],
                     ],
