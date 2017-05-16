@@ -38,13 +38,13 @@
                         <div class="pwdArea" id="pwdArea">
                             <label class="input-tips" for="p">密码：</label>
                             <div class="inputOuter" id="pArea">
-                                <input type="password" id="p" name="p" class="inputstyle"/>
+                                <input type="password" id="p" name="password" class="inputstyle"/>
                             </div>
                         </div>
                         <div class="uinArea" id="verifyImg">
                             <label class="input-tips" for="u">验证码:</label>
                             <div class="inputOuterImg" id="uArea">
-                                <input type="text" id="i" name="verifyImg" class="inputstyleImg"/>
+                                <input type="text" id="i" name="captcha" class="inputstyleImg"/>
                                 <img src="" alt="验证码"/>
                             </div>
                         </div>
@@ -92,6 +92,12 @@
                         <label for="qq" class="input-tips2">邮箱:</label>
                         <div class="inputOuter2">
                             <input type="text" id="email" name="email" class="inputstyle2"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="qq" class="input-tips2">验证码:</label>
+                        <div class="inputOuterImg">
+                            <input type="text" id="email" name="captcha" class="inputstyleImg"/>
                         </div>
                     </li>
                     <li>

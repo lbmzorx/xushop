@@ -17,6 +17,7 @@ class CommonController extends BaseController
     public $layout = 'main';
     public function init(){
         parent::init();
+        self::check_user();
         $view = \Yii::$app->getView();
         $view->params['menu']=self::menu();
     }
@@ -189,5 +190,9 @@ class CommonController extends BaseController
                 ],
             ],
         ];
+    }
+
+    protected function check_user(){
+
     }
 }

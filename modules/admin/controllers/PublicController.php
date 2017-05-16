@@ -9,7 +9,7 @@
 namespace app\modules\admin\controllers;
 
 
-use yii\base\Controller;
+use yii\web\Controller;
 use app\models\Admins;
 class PublicController extends Controller
 {
@@ -39,17 +39,24 @@ class PublicController extends Controller
         $request = \Yii::$app->request;
         if($request->isPost){
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            $user_name=$request->post('user_name');
+            $username=$request->post('username');
             $password=$request->post('password');
-            $admins=Admins::find()->where(['user_name'=> $user_name])->asArray()->one();
+            $admins=Admins::find()->where(['username'=> $username])->asArray()->one();
             if($admins && \Yii::$app->getSecurity()->validatePassword($password,$admins['password'])){
-                \Yii::$app->session->set('admins',$admins);
-                return ['status'=>true,'msg'=>'登录成功'];
+                \Yii::$app->session->setName($admins['username']);
+                \Yii::$app->session->setId($admins['id']);
+
+                $this->redirect('default/index');
             }else{
                 return ['status'=>false,'msg'=>'登录失败'];
             }
         }
         return $this->renderPartial('login');
+    }
+
+    public function actionLogout(){
+        \Yii::$app->session->removeAll();
+        $this->redirect('login');
     }
     public function actionRegister(){
         $request = \Yii::$app->request;
