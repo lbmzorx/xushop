@@ -193,6 +193,8 @@ class CommonController extends BaseController
     }
 
     protected function check_user(){
+        if(!(\Yii::$app->session->getId())){
 
+        }
     }
 }

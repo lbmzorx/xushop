@@ -11,6 +11,7 @@ namespace app\modules\admin\controllers;
 
 use yii\web\Controller;
 use app\models\Admins;
+use app\models\Tools\Captcha;
 class PublicController extends Controller
 {
 
@@ -92,6 +93,10 @@ class PublicController extends Controller
             return true;
         }
         return false;
+    }
+    public function actionCaptcha(){
+        $captcha=new captcha();
+        $captcha->entry('verify_code');
     }
 
 }
