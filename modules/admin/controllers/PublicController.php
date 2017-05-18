@@ -12,6 +12,7 @@ namespace app\modules\admin\controllers;
 use yii\web\Controller;
 use app\models\Admins;
 use app\models\Tools\Captcha;
+
 class PublicController extends Controller
 {
 
@@ -21,7 +22,8 @@ class PublicController extends Controller
     public $authKey;
     public $accessToken;
 
-    public function init(){
+    public function init()
+    {
         parent::init();
     }
 
@@ -38,39 +40,60 @@ class PublicController extends Controller
     public function actionLogin()
     {
         $request = \Yii::$app->request;
-        if($request->isPost){
+        if ($request->isPost) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            $username=$request->post('username');
-            $password=$request->post('password');
-            $admins=Admins::find()->where(['username'=> $username])->asArray()->one();
-            if($admins && \Yii::$app->getSecurity()->validatePassword($password,$admins['password'])){
-                \Yii::$app->session->setName($admins['username']);
-                \Yii::$app->session->setId($admins['id']);
+            $username = $request->post('username');
+            $password = $request->post('password');
+            $captcha = $request->post('captcha');
 
-                $this->redirect('default/index');
-            }else{
-                return ['status'=>false,'msg'=>'登录失败'];
+            var_dump($request->post());
+            exit;
+
+            if ($captcha) {
+                $verifyImg = new captcha();
+                if (!$verifyImg->check($captcha, 'verify_code')) {
+                    return ['status' => false, 'msg' => '验证码错误'];
+                }
+
+                $admins = Admins::find()->where(['username' => $username])->asArray()->one();
+                if ($admins && \Yii::$app->getSecurity()->validatePassword($password, $admins['password'])) {
+                    \Yii::$app->session->setName($admins['username']);
+                    \Yii::$app->session->setId($admins['id']);
+
+                    $this->redirect('default/index');
+                } else {
+                    return ['status' => false, 'msg' => '登录失败'];
+                }
             }
         }
+
+
         return $this->renderPartial('login');
     }
 
-    public function actionLogout(){
+    public function actionLogout()
+    {
         \Yii::$app->session->removeAll();
         $this->redirect('login');
     }
-    public function actionRegister(){
+
+    public function actionRegister()
+    {
         $request = \Yii::$app->request;
-        if($request->isPost){
+        if ($request->isPost) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             $form = $request->post();
+            $verifyImg = new captcha();
+            if (!$verifyImg->check($form['captcha'], 'verify_code')) {
+                return ['status' => false, 'msg' => '验证码错误'];
+            }
             //验证模块
             $customer = new Admins();
-            if(!$customer->load(['formReg'=>$form],'formReg')){
-                $m=$customer->getErrors();
-                return ['status'=>false,'msg'=>end($m)];
+            if (!$customer->load(['formReg' => $form], 'formReg')) {
+                $m = $customer->getErrors();
+                return ['status' => false, 'msg' => end($m)];
             }
-            $customer->password=\Yii::$app->getSecurity()->generatePasswordHash($form['password'],12);
+            $customer->password = \Yii::$app->getSecurity()->generatePasswordHash($form['password'], 12);
             $customer->save();
         }
     }
@@ -94,9 +117,16 @@ class PublicController extends Controller
         }
         return false;
     }
-    public function actionCaptcha(){
-        $captcha=new captcha();
-        $captcha->entry('verify_code');
+
+    /*
+     * 验证码
+     */
+    public function actionVerifyImg()
+    {
+
+
+        $captcha = new captcha();
+        return $captcha->entry('verify_code');
     }
 
 }

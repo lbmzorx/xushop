@@ -1,3 +1,6 @@
+<?php
+use \yii\helpers\Url;
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +29,7 @@
         <div class="web_login" id="web_login">
             <div class="login-box">
                 <div class="login_form">
-                    <form action="" name="loginform" accept-charset="utf-8" id="login_form"
+                    <form action="<?=Url::to(['login'])?>" name="loginform" accept-charset="utf-8" id="login_form"
                           class="loginForm" method="post"><input type="hidden" name="did" value="0"/>
                         <input type="hidden" name="to" value="log"/>
                         <div class="uinArea" id="uinArea">
@@ -45,7 +48,8 @@
                             <label class="input-tips" for="u">验证码:</label>
                             <div class="inputOuterImg" id="uArea">
                                 <input type="text" id="i" name="captcha" class="inputstyleImg"/>
-                                <img src="" alt="验证码"/>
+
+                                <img src="<?=Url::to(['public/verify-img'])?>?math=<?=rand()?>" alt="验证码" onclick="this.src='<?=Url::to(['public/verify-img'])?>?math='+Math.random()"/>
                             </div>
                         </div>
                         <div style="padding-left:50px;margin-top:20px;"><input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
@@ -59,7 +63,7 @@
     <div class="qlogin" id="qlogin" style="display: none; ">
 
         <div class="web_login">
-            <form name="formReg" id="regUser" accept-charset="utf-8" action="<?=\yii\helpers\Url::to(['register'])?>" method="post">
+            <form name="formReg" id="regUser" accept-charset="utf-8" action="<?=Url::to(['register'])?>" method="post">
                 <input type="hidden" name="to" value="reg"/>
                 <input type="hidden" name="did" value="0"/>
                 <ul class="reg_form" id="reg-ul">

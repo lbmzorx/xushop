@@ -94,7 +94,7 @@ input::-ms-clear {
 .web_login .input-tips {
 	float:left;
 	margin-top:10px;
-	width:70px;
+	width:60px;
 	height:42px;
 	font-size:16px;
 	line-height:42px;
@@ -120,16 +120,15 @@ input::-ms-clear {
 	
 }
 .web_login .inputOuterImg {
-	width:100px;
+	width:240px;
 	height:42px;
-	margin-top:10px;
+
 	float:left;
 
 }
 .web_login .inputstyleImg {
 	width:100px;
 	height:38px;
-	padding-left:5px;
 	line-height:30px;line-height:38px;
 	border:1px solid #D7D7D7;
 	background:#fff;
